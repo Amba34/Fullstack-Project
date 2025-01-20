@@ -1,0 +1,65 @@
+.login {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+  
+    .lContainer {
+      width: 300px;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Ensures all elements are centered */
+      gap: 15px;
+  
+      .lInput {
+        width: 100%; /* Makes input fields stretch to full width */
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        outline: none;
+        transition: 0.3s ease-in-out;
+        box-sizing: border-box; /* Ensures padding doesn't affect width */
+  
+        &:focus {
+          border-color: #667eea;
+          box-shadow: 0px 0px 5px rgba(102, 126, 234, 0.5);
+        }
+      }
+  
+      .lButton {
+        width: 100%;
+        padding: 10px;
+        background: #667eea;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s ease-in-out;
+        text-align: center;
+  
+        &:hover {
+          background: #5563c1;
+        }
+  
+        &:disabled {
+          background: gray;
+          cursor: not-allowed;
+        }
+      }
+  
+      span {
+        color: red;
+        font-size: 14px;
+        text-align: center;
+      }
+    }
+  }
+  

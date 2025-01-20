@@ -1,0 +1,91 @@
+.reserve {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.304);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rContainer {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    width: 40%;
+    max-width: 500px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Cross button at the top-right */
+.rClose {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: red;
+}
+
+/* Room items */
+.rItem {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.rInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.rTitle {
+    font-weight: 500;
+}
+
+.rDesc {
+    font-weight: 300;
+}
+
+.rMax {
+    font-size: 12px;
+}
+
+.rPrice {
+    font-weight: 500;
+}
+
+/* Blue button */
+.rButton {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.rButton:hover {
+    background-color: #0056b3;
+}
+
+.rSelectRooms{
+    display: flex;
+    flex-wrap: wrap;
+    gap : 5px;
+    font-size: 8px;
+    color : gray;
+}
+.room{
+    display: flex;
+    flex-direction: column;
+}
