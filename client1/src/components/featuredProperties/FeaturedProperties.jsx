@@ -4,12 +4,12 @@ import "./featuredProperties.css";
 const FeaturedProperties = () => {
 
   const {data,loading,error} = useFetch("/hotels?featured=true&limit=4");
-
+  const data1 = data
   
   return (
     <div className="fp">
       {loading ? ("Loading") : (<>
-    {data.map(item => (
+    {data1.map(item => (
       <div className="fpItem" key = {item._id}>
         <img
           src={item.photos[0]}
