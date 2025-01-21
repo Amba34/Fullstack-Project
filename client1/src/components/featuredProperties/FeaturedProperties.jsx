@@ -1,32 +1,53 @@
 import useFetch from "../../Hooks/useFetch";
-import "./featuredProperties.css";
+import "./featured.css";
 
-const FeaturedProperties = () => {
+const Featured = () => {
 
-  const {data,loading,error} = useFetch("/hotels?featured=true&limit=4");
-  const data1 = data
-  
+  const {data,loading,error} = useFetch("/hotels/countByCity?cities=Pune,Mumbai,Latur");
+
+
   return (
-    <div className="fp">
-      {loading ? ("Loading") : (<>
-    {data1.map(item => (
-      <div className="fpItem" key = {item._id}>
+    <div className="featured">
+          {loading ? ("Loading Please wait") : (<>
+
+        <div className="featuredItem">
         <img
-          src={item.photos[0]}
+          src="https://cf.bstatic.com/xdata/images/city/max500/957801.webp?k=a969e39bcd40cdcc21786ba92826063e3cb09bf307bcfeac2aa392b838e9b7a5&o="
           alt=""
-          className="fpImg"
-        />
-        <span className="fpName">{item.name}</span>
-        <span className="fpCity">{item.city}</span>
-        <span className="fpPrice">Starting from ${item.cheapestPrice}</span>
-        {item.rating && <div className="fpRating">
-          <button>{item.rating}</button>
-          <span>Excellent</span>
-        </div>}
-      </div>))}
-      </>)}
+          className="featuredImg"
+          />
+        <div className="featuredTitles">
+          <h1>Pune</h1>
+          <h2>{data[0]} properties</h2>
+        </div>
+      </div>
+      
+      <div className="featuredItem">
+        <img
+          src="https://cf.bstatic.com/xdata/images/city/max500/690334.webp?k=b99df435f06a15a1568ddd5f55d239507c0156985577681ab91274f917af6dbb&o="
+          alt=""
+          className="featuredImg"
+          />
+        <div className="featuredTitles">
+          <h1>Mumbai</h1>
+          <h2>{data[1]} properties</h2>
+        </div>
+      </div>
+      <div className="featuredItem">
+        <img
+          src="https://cf.bstatic.com/xdata/images/city/max500/689422.webp?k=2595c93e7e067b9ba95f90713f80ba6e5fa88a66e6e55600bd27a5128808fdf2&o="
+          alt=""
+          className="featuredImg"
+          />
+        <div className="featuredTitles">
+          <h1>Latur</h1>
+          <h2>{data[2]} properties</h2>
+        </div>
+      </div>
+        </>)
+        }
     </div>
   );
 };
 
-export default FeaturedProperties;
+export default Featured;
