@@ -89,6 +89,7 @@ const Register = () => {
             onChange={handleChange}
             required
           />
+          
           <button type="submit">Register</button>
           {error && <span className="error">{error}</span>}
         </form>
