@@ -1,53 +1,37 @@
 import useFetch from "../../Hooks/useFetch";
-import "./featured.css";
+import "./featuredProperties.css";
 
-const Featured = () => {
+const FeaturedProperties = () => {
 
-  const {data,loading,error} = useFetch("/hotels/countByCity?cities=Pune,Mumbai,Latur");
+  const {data,loading,error} = useFetch("/hotels?featured=true&limit=4");
 
-
+  
   return (
-    <div className="featured">
-          {loading ? ("Loading Please wait") : (<>
-
-        <div className="featuredItem">
-        <img
-          src="https://cf.bstatic.com/xdata/images/city/max500/957801.webp?k=a969e39bcd40cdcc21786ba92826063e3cb09bf307bcfeac2aa392b838e9b7a5&o="
-          alt=""
-          className="featuredImg"
+    <div className="fp">
+      {loading ? ("Loading...") : error ? ("Error loading properties") : (<>
+      {Array.isArray(data) && data.map(item => (
+        <div className="fpItem" key={item._id}>
+          <img
+            src={item.photos?.[0] || "https://via.placeholder.com/300x200?text=No+Image"}
+            alt={item.name || "Property"}
+            className="fpImg"
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = "https://via.placeholder.com/300x200?text=Error+Loading+Image";
+            }}
           />
-        <div className="featuredTitles">
-          <h1>Pune</h1>
-          <h2>{data[0]} properties</h2>
+          <span className="fpName">{item.name || "Unnamed Property"}</span>
+          <span className="fpCity">{item.city || "Location Unknown"}</span>
+          <span className="fpPrice">Starting from ${item.cheapestPrice || 0}</span>
+          {item.rating && <div className="fpRating">
+            <button>{item.rating}</button>
+            <span>Excellent</span>
+          </div>}
         </div>
-      </div>
-      
-      <div className="featuredItem">
-        <img
-          src="https://cf.bstatic.com/xdata/images/city/max500/690334.webp?k=b99df435f06a15a1568ddd5f55d239507c0156985577681ab91274f917af6dbb&o="
-          alt=""
-          className="featuredImg"
-          />
-        <div className="featuredTitles">
-          <h1>Mumbai</h1>
-          <h2>{data[1]} properties</h2>
-        </div>
-      </div>
-      <div className="featuredItem">
-        <img
-          src="https://cf.bstatic.com/xdata/images/city/max500/689422.webp?k=2595c93e7e067b9ba95f90713f80ba6e5fa88a66e6e55600bd27a5128808fdf2&o="
-          alt=""
-          className="featuredImg"
-          />
-        <div className="featuredTitles">
-          <h1>Latur</h1>
-          <h2>{data[2]} properties</h2>
-        </div>
-      </div>
-        </>)
-        }
+      ))}
+      </>)}
     </div>
   );
 };
 
-export default Featured;
+export default FeaturedProperties;
