@@ -78,6 +78,10 @@ const List = () => {
           <div className="listResult">
             {loading ? (
               <p>Loading...</p>
+            ) : error ? (
+              <p>Error: {error}</p>
+            ) : !Array.isArray(data) ? (
+              <p>No results found</p>
             ) : (
               <>
                 {data.map((item) => (
