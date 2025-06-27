@@ -7,10 +7,13 @@ import { useParams } from "react-router-dom";
 import useFetch from "../../Hooks/useFetch";
 import { useLocation } from "react-router-dom";
 
+// For Create React App
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const Single = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
-  const { data ,loading , error } = useFetch(`/users/${id}`); 
+  const { data ,loading , error } = useFetch(`${apiUrl}/users/${id}`); 
   const user = data
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error loading user data.</p>;

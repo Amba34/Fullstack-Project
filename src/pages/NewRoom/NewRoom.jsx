@@ -6,6 +6,12 @@ import { useState } from "react";
 import { roomInputs } from "../../formSource";
 import useFetch from "../../Hooks/useFetch";
 import axios from "axios"
+
+// For Create React App
+const apiUrl = process.env.REACT_APP_API_URL;
+
+
+
 const NewRoom = () => {
 
 
@@ -13,7 +19,7 @@ const NewRoom = () => {
   const [hotelID, setHotelId] = useState(null);
   const [rooms, setRooms] = useState([]);
 
-  const { data, loading, error } = useFetch("/hotels");
+  const { data, loading, error } = useFetch(`${apiUrl}/hotels`);
 
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));

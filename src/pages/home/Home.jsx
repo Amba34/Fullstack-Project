@@ -3,11 +3,14 @@ import Navbar from "../../components/navbar/Navbar";
 import "./home.scss";
 import { useNavigate } from "react-router-dom";
 
+// For Create React App
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const Home = () => {
   const navigate = useNavigate();
 
   const handleViewUsers = () => {
-    navigate("/users"); // Redirect to the Users page
+    navigate(`${apiUrl}/users`); // Redirect to the Users page
   };
 
   return (

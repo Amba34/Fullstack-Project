@@ -5,6 +5,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
+// For Create React App
+const apiUrl = process.env.REACT_APP_API_URL;
+
 
 
 const Login = () => {
@@ -24,12 +27,14 @@ const Login = () => {
     const handleClick = async (e) => {
         e.preventDefault()
         dispatch({type:"LOGIN_START"})
-
-
         try {
-            const res = await axios.post("/auth/login" , credentials)
-            
-            if (res.data.isAdmin){
+            console.log(apiUrl)
+            const res = await axios.post(`${apiUrl}/auth/login` , credentials)
+            console.log("Axios response:", res);
+            console.log(res)
+            console.log(apiUrl)
+
+            if (res && res.data && res.data.isAdmin){
               dispatch({type : "LOGIN_SUCCESS" , payload : res.data.details })
               navigate("/")
             } else{
@@ -37,7 +42,7 @@ const Login = () => {
             }
             navigate("/")
         } catch (err) {
-            dispatch({type:"LOGIN_FAILED" , payload : err.response.data})
+             dispatch({type:"LOGIN_FAILED" , payload : { message: err.message }})
         }
     }
     
