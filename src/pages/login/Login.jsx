@@ -42,7 +42,7 @@ const Login = () => {
             }
             navigate("/")
         } catch (err) {
-             dispatch({type:"LOGIN_FAILED" , payload : { message: err.message }})
+             dispatch({type:"LOGIN_FAILED" , payload : { message: err.responce.data }})
         }
     }
     
