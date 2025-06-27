@@ -12,9 +12,32 @@ const Datatable = ({ columns }) => {
   const [list, setList] = useState([]);
   const { data, loading, error } = useFetch(`/${path}`);
 console.log("Fetched list:", list);
-  useEffect(() => {
+useEffect(() => {
+  // Check if data is valid (array with at least one item)
+  if (Array.isArray(data) && data.length > 0) {
     setList(data);
-  }, [data]);
+  } else {
+    // Fallback dummy data
+    const dummyData = [
+      {
+        _id: "1",
+        name: "John Doe",
+        email: "john@example.com",
+        age: 30,
+        status: "active",
+      },
+      {
+        _id: "2",
+        name: "Jane Smith",
+        email: "jane@example.com",
+        age: 25,
+        status: "pending",
+      },
+    ];
+    setList(dummyData);
+  }
+}, [data]);
+
 
   const handleDelete = async (id) => {
     try {
